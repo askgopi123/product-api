@@ -16,7 +16,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 output application/json
 ---
 {
-	"hello 3": "Hello3 app from stnand alone deployment"
+	"hello 3": "Hello3 app from stnand alone deployment--Sai ram"
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
