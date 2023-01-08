@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="6fd23c08-c831-4ed9-b586-4d39be8be2df" >
+		<http:listener-connection host="0.0.0.0" port="8087" />
+	</http:listener-config>
+	<flow name="hello3Flow" doc:id="e62ebaa5-9f18-4b6f-8028-7c3d47c1548c" >
+		<http:listener doc:name="Listener" doc:id="5dc987c0-5e87-49f1-b69c-4512b7da3119" config-ref="HTTP_Listener_config" path="/hello3"/>
+		<ee:transform doc:name="Transform Message" doc:id="93e99acf-540c-4590-8a4b-5b05f4955bdb" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"hello 3": "Hello3 app from stnand alone deployment"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
